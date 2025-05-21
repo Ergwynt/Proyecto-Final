@@ -1,0 +1,122 @@
+[
+  {
+    "model": "books.book",
+    "fields": {
+      "isbn": "9780261102385",
+      "title": "El Señor de los Anillos",
+      "slug": "el-senor-de-los-anillos",
+      "author": "J.R.R. Tolkien",
+      "description": "Una de las mayores obras de fantasía épica que sigue la historia de Frodo Bolsón y su misión de destruir el Anillo Único.",
+      "cover": "covers/lotr.jpg",
+      "category": "fantasy"
+    }
+  },
+  {
+    "model": "books.book",
+    "fields": {
+      "isbn": "9780765326355",
+      "title": "El Camino de los Reyes",
+      "slug": "el-camino-de-los-reyes",
+      "author": "Brandon Sanderson",
+      "description": "El primer libro de la serie El Archivo de las Tormentas, una historia épica llena de magia, guerra y personajes inolvidables.",
+      "cover": "covers/way_of_kings.jpg",
+      "category": "fantasy"
+    }
+  },
+  {
+    "model": "books.book",
+    "fields": {
+      "isbn": "9780553573404",
+      "title": "Juego de Tronos",
+      "slug": "juego-de-tronos",
+      "author": "George R.R. Martin",
+      "description": "El inicio de la saga Canción de Hielo y Fuego, donde las casas nobles luchan por el trono de hierro en un mundo lleno de traición y magia.",
+      "cover": "covers/game_of_thrones.jpg",
+      "category": "fantasy"
+    }
+  },
+  {
+    "model": "books.book",
+    "fields": {
+      "isbn": "9788401337208",
+      "title": "El Nombre del Viento",
+      "slug": "el-nombre-del-viento",
+      "author": "Patrick Rothfuss",
+      "description": "La historia de Kvothe, un niño prodigio que se convierte en un legendario mago y aventurero.",
+      "cover": "covers/name_of_the_wind.jpg",
+      "category": "fantasy"
+    }
+  },
+  {
+    "model": "books.book",
+    "fields": {
+      "isbn": "9788420674209",
+      "title": "1984",
+      "slug": "1984",
+      "author": "George Orwell",
+      "description": "Una novela distópica sobre un régimen totalitario donde el Gran Hermano todo lo ve.",
+      "cover": "covers/1984.jpg",
+      "category": "scifi"
+    }
+  },
+  {
+    "model": "books.book",
+    "fields": {
+      "isbn": "9780307474278",
+      "title": "El Código Da Vinci",
+      "slug": "el-codigo-da-vinci",
+      "author": "Dan Brown",
+      "description": "Un thriller lleno de misterio donde Robert Langdon descifra códigos y conspiraciones ocultas.",
+      "cover": "covers/da_vinci_code.jpg",
+      "category": "thriller"
+    }
+  },
+  {
+    "model": "books.book",
+    "fields": {
+      "isbn": "9788490328881",
+      "title": "Los Pilares de la Tierra",
+      "slug": "los-pilares-de-la-tierra",
+      "author": "Ken Follett",
+      "description": "Una épica historia medieval sobre la construcción de una catedral y los conflictos de poder.",
+      "cover": "covers/pillars_of_the_earth.jpg",
+      "category": "historical"
+    }
+  },
+  {
+    "model": "books.book",
+    "fields": {
+      "isbn": "9780307743657",
+      "title": "El Resplandor",
+      "slug": "el-resplandor",
+      "author": "Stephen King",
+      "description": "Un thriller de terror psicológico donde un hotel embrujado transforma a un hombre en un asesino.",
+      "cover": "covers/shining.jpg",
+      "category": "horror"
+    }
+  },
+  {
+    "model": "books.book",
+    "fields": {
+      "isbn": "9788445000663",
+      "title": "Los magos de la pólvora",
+      "slug": "los-magos-de-la-polvora",
+      "author": "Brian McCLELLAN",
+      "description": "Fantasía inspirada en la Revolución Francesa, donde la magia y la pólvora coexisten. Sigue a Tamas, un mariscal que derroca al rey, desatando conspiraciones y una profecía oscura.",
+      "cover": "covers/powder_mage.jpg",
+      "category": "fantasy"
+    }
+  },
+  {
+    "model": "books.book",
+    "fields": {
+      "isbn": "9780141182803",
+      "title": "Berserk",
+      "slug": "berserk",
+      "author": "Kentaro Miura",
+      "description": "¡¡¡¡ BERSERK !!!!",
+      "cover": "covers/berserk.jpg",
+      "category": "manga"
+    }
+  }
+]

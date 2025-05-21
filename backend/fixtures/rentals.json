@@ -1,0 +1,102 @@
+﻿[
+  {
+    "model": "rentals.rental",
+    "fields": {
+      "book": 1,
+      "user": 2,
+      "rental_start_date": "2025-03-01",
+      "rental_end_date": "2025-03-15",
+      "rental_status": "active"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "fields": {
+      "book": 2,
+      "user": 3,
+      "rental_start_date": "2025-03-05",
+      "rental_end_date": "2025-03-19",
+      "rental_status": "active"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "fields": {
+      "book": 3,
+      "user": 4,
+      "rental_start_date": "2025-03-10",
+      "rental_end_date": "2025-03-24",
+      "rental_status": "returned"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "fields": {
+      "book": 4,
+      "user": 5,
+      "rental_start_date": "2025-03-15",
+      "rental_end_date": "2025-03-29",
+      "rental_status": "active"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "fields": {
+      "book": 5,
+      "user": 6,
+      "rental_start_date": "2025-03-20",
+      "rental_end_date": "2025-04-03",
+      "rental_status": "returned"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "fields": {
+      "book": 6,
+      "user": 7,
+      "rental_start_date": "2025-03-22",
+      "rental_end_date": "2025-04-05",
+      "rental_status": "active"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "fields": {
+      "book": 7,
+      "user": 8,
+      "rental_start_date": "2025-03-25",
+      "rental_end_date": "2025-04-08",
+      "rental_status": "active"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "fields": {
+      "book": 8,
+      "user": 9,
+      "rental_start_date": "2025-03-28",
+      "rental_end_date": "2025-04-11",
+      "rental_status": "returned"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "fields": {
+      "book": 9,
+      "user": 10,
+      "rental_start_date": "2025-03-30",
+      "rental_end_date": "2025-04-13",
+      "rental_status": "active"
+    }
+  },
+  {
+    "model": "rentals.rental",
+    "fields": {
+      "book": 10,
+      "user": 11,
+      "rental_start_date": "2025-03-31",
+      "rental_end_date": "2025-04-14",
+      "rental_status": "active"
+    }
+  }
+]
