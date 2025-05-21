@@ -62,11 +62,12 @@ const returnBook = async (rentalId: number, bookTitle: string) => {
 
     <div v-if="rentalStore.loading" class="alert alert-info">Cargando...</div>
     <div v-if="rentalStore.error" class="alert alert-danger">{{ rentalStore.error }}</div>
+    <br />
 
-    <!-- ✅ ADMIN: Agrupado por usuario -->
+    <!--ADMIN -->
     <div v-if="profileStore.user?.is_admin">
       <div v-for="(rentals, username) in groupedRentals" :key="username" class="mb-5">
-        <h4 class="mb-3">{{ username }}</h4>
+        <h4 class="mb-3" style="text-align: center">{{ username }}</h4>
         <div class="row">
           <div class="col-12 mb-4" v-for="rental in rentals" :key="rental.rental_id">
             <div class="card h-100 shadow-sm">
@@ -91,11 +92,12 @@ const returnBook = async (rentalId: number, bookTitle: string) => {
               </div>
             </div>
           </div>
+          <div class="strong-divider"></div>
         </div>
       </div>
     </div>
 
-    <!-- ✅ USUARIO NORMAL -->
+    <!--USUARIO -->
     <div v-else>
       <div v-if="rentalStore.rentals.length > 0" class="row">
         <div class="col-12 mb-4" v-for="rental in rentalStore.rentals" :key="rental.rental_id">
@@ -136,6 +138,13 @@ const returnBook = async (rentalId: number, bookTitle: string) => {
 </template>
 
 <style scoped>
+.strong-divider {
+  height: 6px;
+  background-color: #00855d;
+  margin: 1.5rem 0;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 64, 133, 0.6);
+}
 .card img {
   max-height: 200px;
   object-fit: cover;

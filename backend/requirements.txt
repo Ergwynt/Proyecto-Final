@@ -2,13 +2,12 @@
 pytest-django
 model-bakery
 faker
-Django>=4.0
-gunicorn
-whitenoise
+
 # Project requirements
 django
 pillow
 ipython
 django-colorfield
 django-cors-headers
+
 
