@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useBooksStore } from '@/stores/booksStore'
 import { useRentalStore } from '@/stores/rentalStore'
 import { useProfileStore } from '@/stores/profileStore'
 
 const route = useRoute()
+const router = useRouter()
 const booksStore = useBooksStore()
 const rentalStore = useRentalStore()
 const profileStore = useProfileStore()
@@ -48,55 +49,55 @@ const handleRent = async () => {
 
 <template>
   <div class="container my-5">
-    <router-link to="/books/" class="btn btn-secondary mt-2">Volver atrás</router-link>
+    <!-- Barra superior con botones -->
+    <nav
+      class="d-flex justify-content-between align-items-center mb-4 p-3 bg-light rounded shadow-sm sticky-top"
+    >
+      <button @click="router.back()" class="btn btn-outline-primary">← Volver atrás</button>
 
-    <!-- libro cargado -->
-    <div v-if="book">
-      <router-link :to="`/books/${book.isbn}/update/`" class="btn btn-secondary mt-2">
+      <button
+        v-if="book"
+        @click="router.push(`/books/${book.isbn}/update/`)"
+        class="btn btn-outline-secondary"
+      >
         Modificar
-      </router-link>
+      </button>
+    </nav>
 
-      <div class="card shadow-lg p-4 mb-5">
-        <div class="row g-4 align-items-center">
-          <div class="col-md-4 text-center">
-            <img :src="book.cover" :alt="`Cover of ${book.title}`" class="img-fluid rounded" />
-          </div>
+    <!-- contenido del libro -->
+    <div v-if="book" class="card shadow-lg p-4 mb-5">
+      <div class="row g-4 align-items-center">
+        <div class="col-md-4 text-center">
+          <img :src="book.cover" :alt="`Cover of ${book.title}`" class="img-fluid rounded" />
+        </div>
 
-          <!-- informacion del libro -->
-          <div class="col-md-8">
-            <h2 class="mb-3">{{ book.title }}</h2>
-            <p><strong>Autor:</strong> {{ book.author }}</p>
-            <p><strong>ISBN:</strong> {{ book.isbn }}</p>
-            <p><strong>Descripción:</strong> {{ book.description }}</p>
-            <p><strong>Category: </strong>{{ book.category['label'].label }}</p>
-            <p>
-              <strong>Disponibilidad: </strong>
-              <span :class="book.available ? 'text-success' : 'text-danger'">
-                {{ book.available ? 'Disponible' : 'No disponible' }}
-              </span>
-            </p>
+        <div class="col-md-8">
+          <h2 class="mb-3">{{ book.title }}</h2>
+          <p><strong>Autor:</strong> {{ book.author }}</p>
+          <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+          <p><strong>Descripción:</strong> {{ book.description }}</p>
+          <p><strong>Categoría:</strong> {{ book.category?.label?.label || 'N/A' }}</p>
+          <p>
+            <strong>Disponibilidad:</strong>
+            <span :class="book.available ? 'text-success' : 'text-danger'">
+              {{ book.available ? 'Disponible' : 'No disponible' }}
+            </span>
+          </p>
 
-            <div v-if="book.available && !profileStore.user?.is_admin" class="mt-4">
-              <h5 class="mb-3">Rentar este libro</h5>
-              <div class="mb-3">
-                <label for="rentalEndDate" class="form-label">Fecha de fin del alquiler</label>
-                <input
-                  type="date"
-                  id="rentalEndDate"
-                  class="form-control"
-                  v-model="rentalEndDate"
-                />
-              </div>
-              <button class="btn btn-primary w-100" @click="handleRent">Rentar libro</button>
-              <p class="text-success mt-2" v-if="rentMessage">{{ rentMessage }}</p>
-              <p class="text-danger mt-2" v-if="rentError">{{ rentError }}</p>
+          <div v-if="book.available && !profileStore.user?.is_admin" class="mt-4">
+            <h5 class="mb-3">Rentar este libro</h5>
+            <div class="mb-3">
+              <label for="rentalEndDate" class="form-label">Fecha de fin del alquiler</label>
+              <input type="date" id="rentalEndDate" class="form-control" v-model="rentalEndDate" />
             </div>
+            <button class="btn btn-primary w-100" @click="handleRent">Rentar libro</button>
+            <p class="text-success mt-2" v-if="rentMessage">{{ rentMessage }}</p>
+            <p class="text-danger mt-2" v-if="rentError">{{ rentError }}</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- libro cargando -->
     <div v-else class="text-center">
       <div class="spinner-border text-primary" role="status">
         <span class="visually-hidden">Cargando...</span>
@@ -117,11 +118,25 @@ const handleRent = async () => {
   object-fit: cover;
 }
 
-.card-body {
-  padding: 20px;
+nav {
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
 }
 
 .btn {
-  font-size: 16px;
+  font-size: 1rem;
+  padding: 0.5rem 1.2rem;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  color: white;
 }
 </style>
