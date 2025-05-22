@@ -128,7 +128,6 @@ import Layout from '@/components/Layout.vue'
   opacity: 0.9;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .welcome-title {
     font-size: 2rem;

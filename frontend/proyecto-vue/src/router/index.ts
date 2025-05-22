@@ -18,7 +18,7 @@ const routes = [
   { path: '/login/', component: LoginView },
   { path: '/register/', component: RegisterView },
   { path: '/rentals/', component: Rentals },
-  { path: '/books/', component: BooksView, meta: { requiresAuth: true } },
+  { path: '/books/', name: 'books-list', component: BooksView, meta: { requiresAuth: true } },
   {
     path: '/books/:isbn/',
     name: 'book-detail',

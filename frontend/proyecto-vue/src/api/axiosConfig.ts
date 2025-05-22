@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-// Función para obtener el token CSRF desde las cookies
 const getCsrfToken = () => {
   const csrfToken = document.cookie
     .split('; ')
@@ -19,14 +18,14 @@ const api = axios.create({
 // Interceptor para añadir el token CSRF y el token de autorización en cada petición
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token') // El token de autenticación (JWT)
-    const csrfToken = getCsrfToken() // El token CSRF desde las cookies
+    const token = localStorage.getItem('token')
+    const csrfToken = getCsrfToken()
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`
     }
     if (csrfToken) {
-      config.headers['X-CSRFToken'] = csrfToken // Agregar el token CSRF al encabezado
+      config.headers['X-CSRFToken'] = csrfToken
     }
 
     return config

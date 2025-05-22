@@ -3,7 +3,7 @@ import { useAuthStore } from '@/stores/authStore'
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import api from '@/api/axiosConfig'
 
-vi.mock('@/api/axiosConfig') // Simulamos axios
+vi.mock('@/api/axiosConfig')
 
 describe('authStore', () => {
   beforeEach(() => {

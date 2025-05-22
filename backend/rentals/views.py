@@ -53,15 +53,15 @@ def rent_book(request):
                 return JsonResponse({'error': 'Invalid JSON body'}, status=400)
 
             if 'isbn' not in payload or 'rental_end_date' not in payload:
-                return JsonResponse({'error': 'Missing required fields'}, status=400)
+                return JsonResponse({'error': 'Faltan campos obligatorios'}, status=400)
 
             try:
                 book = Book.objects.get(isbn=payload['isbn'])
             except Book.DoesNotExist:
-                return JsonResponse({'error': 'Book not found'}, status=404)
+                return JsonResponse({'error': 'Libro no encontrado'}, status=404)
 
             if not book.available:
-                return JsonResponse({'error': 'Book is not available'}, status=400)
+                return JsonResponse({'error': 'Libro no disponible'}, status=400)
 
             datenow = datetime.now()
             print(datenow)
@@ -111,13 +111,13 @@ def return_book(request):
             return JsonResponse({'error': 'Invalid JSON body'}, status=400)
 
         if 'rental_id' not in payload:
-            return JsonResponse({'error': 'Missing rental_id'}, status=400)
+            return JsonResponse({'error': 'Falta rental_id'}, status=400)
 
         try:
             rental = Rental.objects.get(id=payload['rental_id'], user=request.user, is_active=True)
             print('Alquiler encontrado:', rental)
         except Rental.DoesNotExist:
-            return JsonResponse({'error': 'Rental not found or already returned'}, status=404)
+            return JsonResponse({'error': 'Rental no encotrada o ya ha sido devuelta'}, status=404)
 
         rental.is_active = False
         rental.return_date = timezone.now()
@@ -128,6 +128,6 @@ def return_book(request):
         rental.book.save()
         print('Libro actualizado, disponible:', rental.book.available)
 
-        return JsonResponse({'message': 'Book returned successfully!'})
+        return JsonResponse({'message': 'Libro devuelto con exito!'})
 
     return JsonResponse({'error': 'Invalid method'}, status=405)

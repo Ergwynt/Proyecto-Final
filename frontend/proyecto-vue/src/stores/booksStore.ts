@@ -87,7 +87,7 @@ export const useBooksStore = defineStore('booksStore', () => {
       const response = await api.post('books/create/', bookData, {
         headers: {
           'Content-Type': 'multipart/form-data',
-          Authorization: `Token ${authStore.token}`,
+          Authorization: `Bearer ${authStore.token}`,
           'X-CSRFToken': csrfToken || '',
         },
         withCredentials: true,

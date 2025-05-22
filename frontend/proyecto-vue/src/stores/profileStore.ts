@@ -16,7 +16,7 @@ export const useProfileStore = defineStore('profile', () => {
 
     try {
       const response = await api.get('users/profile/', {
-        headers: authStore.authHeader, // ✅ usar authHeader correctamente
+        headers: authStore.authHeader,
       })
 
       user.value = response.data.user
@@ -27,7 +27,7 @@ export const useProfileStore = defineStore('profile', () => {
       loading.value = false
     }
   }
-
+  // Modificar perfil
   const updateProfile = async (bio: string, profilePicture: File | null) => {
     loading.value = true
     error.value = null

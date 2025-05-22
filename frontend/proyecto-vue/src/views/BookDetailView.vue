@@ -49,11 +49,12 @@ const handleRent = async () => {
 
 <template>
   <div class="container my-5">
-    <!-- Barra superior con botones -->
     <nav
       class="d-flex justify-content-between align-items-center mb-4 p-3 bg-light rounded shadow-sm sticky-top"
     >
-      <button @click="router.back()" class="btn btn-outline-primary">← Volver atrás</button>
+      <button @click="router.push('/books/')" class="btn btn-outline-primary">
+        ← Volver atrás
+      </button>
 
       <button
         v-if="book"
@@ -64,7 +65,7 @@ const handleRent = async () => {
       </button>
     </nav>
 
-    <!-- contenido del libro -->
+    <!-- contenido libro -->
     <div v-if="book" class="card shadow-lg p-4 mb-5">
       <div class="row g-4 align-items-center">
         <div class="col-md-4 text-center">
@@ -97,7 +98,7 @@ const handleRent = async () => {
         </div>
       </div>
     </div>
-
+    <!-- Cargando libro -->
     <div v-else class="text-center">
       <div class="spinner-border text-primary" role="status">
         <span class="visually-hidden">Cargando...</span>

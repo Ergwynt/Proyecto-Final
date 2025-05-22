@@ -40,7 +40,7 @@ def book_detail(request, isbn):
     try:
         book = Book.objects.get(isbn=isbn)
     except Book.DoesNotExist:
-        return JsonResponse({'error': 'Book not found'}, status=404)
+        return JsonResponse({'error': 'Libro no encotrado'}, status=404)
 
     serializer = BookSerializer(book, request=request)
     return serializer.json_response()
@@ -104,7 +104,6 @@ def update_book(request, isbn):
             data = request.POST
             files = request.FILES
 
-            # Actualizar campos si vienen en la petición
             if 'title' in data:
                 book.title = data['title']
             if 'author' in data:

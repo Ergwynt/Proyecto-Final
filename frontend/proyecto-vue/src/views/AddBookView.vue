@@ -77,7 +77,7 @@ const submitForm = async () => {
     formDataToSend.append('author', formData.value.author)
     formDataToSend.append('description', formData.value.description)
     formDataToSend.append('available', formData.value.available.toString())
-    formDataToSend.append('category', formData.value.category) // <- Añadido
+    formDataToSend.append('category', formData.value.category)
 
     if (formData.value.cover) {
       formDataToSend.append('cover', formData.value.cover)
@@ -93,7 +93,6 @@ const submitForm = async () => {
     if (error.message?.includes('BookSerializer') && error.message?.includes('has no attribute')) {
       successMessage.value = '¡Libro añadido correctamente!'
 
-      // Redirigir después de 2 segundos
       setTimeout(() => {
         router.push('/books/')
       }, 2000)

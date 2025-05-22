@@ -25,17 +25,3 @@ def token_required(view_func):
         return view_func(request, *args, **kwargs)
 
     return wrapper
-
-
-def superuser_required(view_func):
-    def wrapper(request, *args, **kwargs):
-        user = getattr(request, 'user', None)
-        if user is None:
-            return JsonResponse({'error': 'User not authenticated'}, status=401)
-
-        if not user.is_superuser:
-            return JsonResponse({'error': 'Permission denied. Superuser required.'}, status=403)
-
-        return view_func(request, *args, **kwargs)
-
-    return wrapper

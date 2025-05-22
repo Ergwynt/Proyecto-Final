@@ -29,7 +29,6 @@ export const useAuthStore = defineStore('auth', () => {
   const errorMessage = ref('')
   const isLoading = ref(false)
 
-  // ✅ Nuevo: Getter computado para los headers de autorización
   const authHeader = computed(() => ({
     Authorization: token.value ? `Bearer ${token.value}` : '',
   }))

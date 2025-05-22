@@ -24,7 +24,7 @@ def get_profile(request):
         try:
             profile = user.profile
         except Profile.DoesNotExist:
-            return JsonResponse({'error': 'Profile not found'}, status=404)
+            return JsonResponse({'error': 'Perfil no encontrado'}, status=404)
 
         serialized_user = UserSerializer(user).serialize_instance(user)
         serialized_profile = ProfileSerializer(profile).serialize_instance(profile)
@@ -49,7 +49,7 @@ def update_profile(request):
         try:
             profile = user.profile
         except Profile.DoesNotExist:
-            return JsonResponse({'error': 'Profile not found'}, status=404)
+            return JsonResponse({'error': 'Perfil no encontrado'}, status=404)
 
         bio = request.POST.get('bio')
         profile_picture = request.FILES.get('profile_picture')
@@ -92,11 +92,11 @@ def login(request):
             return JsonResponse({'error': 'Invalid JSON body'}, status=400)
 
         if not username or not password:
-            return JsonResponse({'error': 'Missing required fields'}, status=400)
+            return JsonResponse({'error': 'Faltan campos obligatorios'}, status=400)
 
         user = authenticate(username=username, password=password)
         if user is None:
-            return JsonResponse({'error': 'Invalid credentials'}, status=401)
+            return JsonResponse({'error': 'Crdenciales no validas'}, status=401)
 
         Token.objects.filter(user=user).delete()
         token = Token.objects.create(user=user, key=uuid.uuid4(), created_at=now())
@@ -136,13 +136,13 @@ def register(request):
             return JsonResponse({'error': 'Invalid JSON body'}, status=400)
 
         if not username or not password or not first_name or not last_name or not email:
-            return JsonResponse({'error': 'Missing required fields'}, status=400)
+            return JsonResponse({'error': 'Faltan campos obligatorios'}, status=400)
 
         if User.objects.filter(username=username).exists():
-            return JsonResponse({'error': 'Username already exists'}, status=400)
+            return JsonResponse({'error': 'Username ya existente'}, status=400)
 
         if User.objects.filter(email=email).exists():
-            return JsonResponse({'error': 'Email already exists'}, status=400)
+            return JsonResponse({'error': 'Email ya existente'}, status=400)
 
         user = User.objects.create_user(
             username=username,
@@ -152,14 +152,13 @@ def register(request):
             email=email,
         )
 
-        # Crear perfil vacío
         profile = Profile.objects.create(user=user)
 
         token = Token.objects.create(user=user)
 
         return JsonResponse(
             {
-                'message': 'User created successfully',
+                'message': 'Usuario creado con exito',
                 'token': str(token.key),
                 'user': {
                     'username': user.username,
@@ -195,13 +194,13 @@ def auth(request):
             return JsonResponse({'error': 'Invalid JSON body'}, status=400)
 
         if 'username' not in payload or 'password' not in payload:
-            return JsonResponse({'error': 'Missing required fields'}, status=400)
+            return JsonResponse({'error': 'Faltan campos obligatorios'}, status=400)
 
         user = authenticate(username=payload['username'], password=payload['password'])
 
         if user is not None:
             if not hasattr(user, 'token'):
-                return JsonResponse({'error': 'User does not have a token'}, status=401)
+                return JsonResponse({'error': 'El usuario no tiene token'}, status=401)
 
             user_profile = 'admin' if user.is_superuser else 'normal'
             return JsonResponse(
