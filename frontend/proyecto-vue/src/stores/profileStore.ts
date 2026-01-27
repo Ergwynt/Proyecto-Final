@@ -42,7 +42,7 @@ export const useProfileStore = defineStore('profile', () => {
     try {
       const response = await api.post('users/update/', formData, {
         headers: {
-          ...authStore.authHeader, // ✅ también aquí
+          ...authStore.authHeader,
           'Content-Type': 'multipart/form-data',
         },
       })
