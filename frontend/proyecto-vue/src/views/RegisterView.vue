@@ -26,8 +26,7 @@ const handleRegister = async () => {
       last_name: lastName.value,
       email: email.value,
     })
-
-    // Login automático tras registro exitoso
+    
     await authStore.login(username.value, password.value)
 
     successMessage.value = '¡Registro exitoso! Redirigiendo al home...'
