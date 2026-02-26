@@ -12,7 +12,7 @@ interface BookFormData {
   cover: File | null
   available: boolean
   currentCoverUrl: string | null
-  category: string // Añadido campo category
+  category: string 
 }
 
 const router = useRouter()
@@ -38,7 +38,7 @@ const formData = ref<BookFormData>({
   cover: null,
   available: true,
   currentCoverUrl: null,
-  category: 'fantasy', // valor por defecto
+  category: 'fantasy', 
 })
 
 const isSubmitting = ref(false)
@@ -66,7 +66,7 @@ const loadBookData = async () => {
         cover: null,
         available: booksStore.currentBook.available,
         currentCoverUrl: booksStore.currentBook.cover || null,
-        category: booksStore.currentBook.category || 'fantasy', // asignar categoría si existe
+        category: booksStore.currentBook.category || 'fantasy',
       }
     }
   } catch (error) {
