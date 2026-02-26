@@ -16,7 +16,7 @@ const isReturning = ref(false)
 
 const isAdmin = computed(() => profileStore.user?.is_admin)
 
-// Agrupa alquileres por nombre del usuario
+
 const groupedRentals = computed(() => {
   if (!isAdmin.value) return {}
 
